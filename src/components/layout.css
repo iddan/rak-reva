@@ -42,6 +42,9 @@ template {
 a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
+  font-family: sans-serif;
+  color: inherit;
+  font-weight: bold;
 }
 a:active,
 a:hover {
@@ -208,6 +211,7 @@ body {
   -ms-font-feature-settings: "kern", "liga", "clig", "calt";
   -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
   font-feature-settings: "kern", "liga", "clig", "calt";
+  background: rgb(236, 226, 226);
 }
 img {
   max-width: 100%;
@@ -236,6 +240,7 @@ h1 {
   text-rendering: optimizeLegibility;
   font-size: 2.25rem;
   line-height: 1.1;
+  text-transform: uppercase;
 }
 h2 {
   margin-left: 0;
@@ -253,6 +258,7 @@ h2 {
   text-rendering: optimizeLegibility;
   font-size: 1.62671rem;
   line-height: 1.1;
+  color: #A6C8CE;
 }
 h3 {
   margin-left: 0;
@@ -270,6 +276,8 @@ h3 {
   text-rendering: optimizeLegibility;
   font-size: 1.38316rem;
   line-height: 1.1;
+  text-transform: uppercase;
+  color: #A6C8CE;
 }
 h4 {
   margin-left: 0;
@@ -287,6 +295,9 @@ h4 {
   text-rendering: optimizeLegibility;
   font-size: 1rem;
   line-height: 1.1;
+  color: #1E1541;
+  font-weight: bold;
+  font-size: 1.7em;
 }
 h5 {
   margin-left: 0;
@@ -304,6 +315,11 @@ h5 {
   text-rendering: optimizeLegibility;
   font-size: 0.85028rem;
   line-height: 1.1;
+  font-size: 1.25em;
+  background: #A78784;
+  display: inline-block;
+  padding: 8px;
+  color: rgb(204, 221, 233);
 }
 h6 {
   margin-left: 0;
@@ -385,6 +401,8 @@ p {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 1.45rem;
+  font-family: sans-serif;
+  color: #1E1541;
 }
 figure {
   margin-left: 0;
