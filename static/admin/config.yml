@@ -1,0 +1,23 @@
+backend:
+  name: github
+  repo: iddan/rak-reva
+
+media_folder: static/assets
+public_folder: assets
+
+collections:
+  - name: events
+    label: Events
+    label_singular: Event
+    folder: events
+    create: true
+    fields:
+      - { name: date, label: Date, widget: "datetime" }
+      - { name: title, label: Title, widget: "string" }
+      - { name: videoId, label: "Video Id" }
+      - { name: facebookLink, label: "Facebook Link" }
+      - name: performers
+        widget: "list"
+        fields:
+          - { label: Name, name: name, widget: string }
+          - { label: Instrument, name: instrument, widget: string }

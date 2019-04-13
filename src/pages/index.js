@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, graphql } from "gatsby"
 import useWindowSize from "@rooks/use-window-size"
 
 import Layout from "../components/layout"
@@ -9,40 +9,35 @@ import YouTube from "react-youtube"
 
 const localizeMonth = (monthNumber, locale) => {
   const date = new Date();
-  date.setMonth(monthNumber - 1);
+  date.setMonth(monthNumber);
   return date.toLocaleString(locale, { month: "long" })
 }
 
-const programs = [
-  {
-    month: 4,
-    events: [
-      {
-        date: new Date(2019, 3, 4),
-        title: "Ofer Landsberg Trio",
-        videoId: '6Whbcz1OB0U',
-        facebookLink: 'https://www.facebook.com/events/2275839359317140/?event_time_id=2352492044985204',
-        performers: [
-          {
-            name: "Ofer Landsberg",
-            instrument: "Guitar"
-          },
-          {
-            name: "Yonatan Riklis",
-            instrument: "Piano"
-          },
-          {
-            name: "Gasper Bertoncelj",
-            instrument: "Drums"
-          }
-        ]
-      }
-    ]
-  }
-]
+const transformData = (data) => ({
+  events: data.allMarkdownRemark.nodes.map(node => ({
+    ...node.frontmatter,
+    date: new Date(node.frontmatter.date),
+  }))
+});
 
-const IndexPage = () => {
+const groupEventsToPrograms = (events) => {
+  const byProgram = events.reduce((acc, event) => ({
+    ...acc,
+    [event.date.getMonth()]: [
+      ...(acc[event.date.getMonth()] || []),
+      event
+    ]
+  }), []);
+  return Object.entries(byProgram).map(([month, events]) => ({
+    month,
+    events
+  }))
+}
+
+const IndexPage = ({ data }) => {
   const { innerWidth } = useWindowSize();
+  const transformedData = transformData(data);
+  const programs = groupEventsToPrograms(transformedData.events);
   return <Layout>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
     {
@@ -73,5 +68,24 @@ const IndexPage = () => {
     }
   </Layout>
 }
+
+export const query = graphql`
+{
+  allMarkdownRemark {
+    nodes {
+      frontmatter {
+        date
+        title
+        videoId
+        facebookLink
+        performers {
+          instrument
+          name
+        }
+      }
+    }
+  }
+}
+`
 
 export default IndexPage
