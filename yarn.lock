@@ -803,6 +803,11 @@
     react-lifecycles-compat "^3.0.4"
     warning "^3.0.0"
 
+"@rooks/use-window-size@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@rooks/use-window-size/-/use-window-size-1.1.0.tgz#bf992ff91e8237781702bfa250fa8f5ff42858fa"
+  integrity sha512-q5dfNtj6DAB/rGA/N5Q1r/nxiZ127THqRSFwM/PAE6B9dBcYN8IiZ2f+sR4Ps+o9k1WNWuhjRofdm1mYas5ZZw==
+
 "@sindresorhus/is@^0.7.0":
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"

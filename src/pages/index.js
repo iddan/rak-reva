@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import useWindowSize from "@rooks/use-window-size"
 
 import Layout from "../components/layout"
 import Image from "../components/image"
@@ -40,8 +41,9 @@ const programs = [
   }
 ]
 
-const IndexPage = () => (
-  <Layout>
+const IndexPage = () => {
+  const { innerWidth } = useWindowSize();
+  return <Layout>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
     {
       programs.map(program => (
@@ -61,7 +63,7 @@ const IndexPage = () => (
               <YouTube
                 videoId={event.videoId}
                 opts={{
-                  width: window.innerWidth - 43
+                  width: Math.min(innerWidth - 43, 960)
                 }}
               />
             </>
@@ -70,6 +72,6 @@ const IndexPage = () => (
       ))
     }
   </Layout>
-)
+}
 
 export default IndexPage
